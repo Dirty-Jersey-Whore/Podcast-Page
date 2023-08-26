@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Podcast RSS Feed Display</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .episode {
+            border: 1px solid #ccc;
+            margin: 1em;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Podcast Episodes</h1>
+        <div id="cover">
+            <img src="{{ cover_url }}" alt="Cover Art">
+        </div>
+        <div id="podcasts">
+            {% for episode in episodes %}
+                <div class="episode">
+                    <h2>{{ episode.title }}</h2>
+                    <p>{{ episode.description }}</p>
+                    <audio controls>
+                        <source src="{{ episode.audio_url }}" type="audio/mp3">
+                    </audio>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
